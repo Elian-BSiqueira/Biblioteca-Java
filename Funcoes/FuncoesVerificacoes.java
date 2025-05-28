@@ -1,7 +1,11 @@
 package Funcoes;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import Class.*;
 
 public class FuncoesVerificacoes {
     /**
@@ -54,5 +58,32 @@ public class FuncoesVerificacoes {
         }
         return numero;
     }
+
+    public static Autor verificaAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+        String nome = " ";
+        boolean controleDeLoop = true;
+        Autor autor = null;
+
+        while (controleDeLoop) {
+            System.out.print("Digite o nome do autor que deseja adicionar, deixe em branco para cancelar: ");
+            nome = scanner.nextLine().strip();
+            if (nome.isEmpty()) {
+                return null;
+            }
+            String finalNome = nome;
+            autor = hashMap.keySet().stream().
+                    filter(NomeDoautor -> NomeDoautor.getNome().equalsIgnoreCase(finalNome)).findFirst().orElse(null);
+
+            if (autor != null) {
+                System.out.println("Autor esta na biblioteca");
+                controleDeLoop = false;
+            } else {
+                System.out.println("Digite um autor da biblioteca ou deixe em branco");
+            }
+
+        }
+        return autor;
+    }
+
 
 }

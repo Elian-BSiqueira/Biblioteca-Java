@@ -48,13 +48,13 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    // FuncoesGerenciamento.AdicionarAutorELivro(biblioteca, scan);
+                    FuncoesGerenciamento.adicionarAutorELivro(scan, biblioteca);
                     break;
                 case 2:
                     verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na bilioteca. Use a opcao 1 " +
                             "primeiro");
                     if (verificarBiblioteca) {
-                        // FuncoesGerenciamento.AdicionarLivroAoAutor(biblioteca, scan);
+                        FuncoesGerenciamento.adicionarLivro(scan, biblioteca);
                     } else {
                         break;
                     }
