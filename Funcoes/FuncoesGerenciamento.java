@@ -27,10 +27,10 @@ public class FuncoesGerenciamento {
                     System.out.println("Título: " + livro.getTitulo());
                     System.out.println("Autor: " + livro.getAutor().getNome());
                     encontrado = true;
-                    break;
+                    return;
                 }
             }
-            if (encontrado) break;
+            if (encontrado) return;
         }
 
         if (!encontrado) {
