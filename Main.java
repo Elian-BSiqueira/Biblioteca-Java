@@ -75,22 +75,19 @@ public class Main {
                 case 4:
                     verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha livros na biblioteca");
                     if (verificarBiblioteca) {
-                        // FuncoesGerenciamento.PesquisarLivroPorTitulo(biblioteca, scan);
-                    } else {
-                        break;
-
+                        FuncoesGerenciamento.PesquisarLivroPorTitulo(biblioteca, scan);
+                        System.out.println("Pressione Enter para continuar...");
+                        scan.nextLine(); // Espera o usuário pressionar Enter
                     }
-
                     break;
 
                 case 5:
                     verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na biblioteca");
                     if (verificarBiblioteca) {
-                        // FuncoesGerenciamento.PesquisarLivroPorAutor(biblioteca, scan);
-                    } else {
-                        break;
+                        FuncoesGerenciamento.PesquisarLivroPorAutor(biblioteca, scan);
+                        System.out.println("Pressione Enter para continuar...");
+                        scan.nextLine(); // Espera o usuário pressionar Enter
                     }
-
                     break;
 
                 case 6:
