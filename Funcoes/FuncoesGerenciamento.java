@@ -89,123 +89,23 @@ public class FuncoesGerenciamento {
     public static void adicionarLivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
         listarAutores(hashMap);
         Autor autor= FuncoesVerificacoes.verificaAutor(scanner, hashMap);
-        String nome;
         if (autor == null) {
             System.out.println("Operacao cancelada");
             return;
         } else {
-            boolean controleDeLoop = true;
-
-            while (controleDeLoop) {
-                System.out.print("Digite o nome do livro que deseja adicionar, deixe em branco para cancelar: ");
-                nome = scanner.nextLine().strip();
-                if (nome.isEmpty()) {
-                    return;
-                } else {
-                    String nomeverificar = nome;
-                    boolean verificarLivro =
-                            hashMap.get(autor).stream().anyMatch(titulo -> titulo.getTitulo().equalsIgnoreCase(nomeverificar));
-
-                    if (verificarLivro) {
-                        System.out.println("Livro ja esta na biblioteca");
-                        controleDeLoop = false;
-                    } else {
-                        Livro livro = new Livro(nome, autor);
-                        hashMap.get(autor).add(livro);
-                        System.out.printf("Livro %s adicionado com sucesso ao autor %s %n", nome, autor.getNome());
-                        controleDeLoop = false;
-                    }
-
-                }
+            Livro livro = selecionarLivro(scanner, hashMap, autor);
+            if (livro == null) {
+                System.out.println("Operacao cancelada");
+            } else {
+                hashMap.get(autor).add(livro);
+                System.out.printf("Livro %s adicionado com sucesso ao autor(a) %s %n", livro.getTitulo(), autor.getNome());
             }
 
 
         }
     }
 
-    /**
-     * Adiciona um novo autor e um livro associado à biblioteca representada por um HashMap.
-     *
-     * <p>Este método interativo solicita ao usuário, via Scanner, o nome do autor que deseja adicionar.
-     * Caso o autor já exista no HashMap (chaves do mapa), a operação é cancelada.
-     * Se o autor não existir, ele será criado e adicionado ao mapa com uma lista vazia de livros.
-     *
-     * <p>Após adicionar o autor, o método solicita o nome do livro a ser associado a esse autor.
-     * Caso o livro já exista na lista do autor, a operação de adição do livro é cancelada.
-     * Caso contrário, solicita o ano de lançamento do livro (usando um método externo `VerificarNumeroInt`)
-     * e adiciona o novo livro à lista do autor.
-     *
-     * <p>Em qualquer etapa, se o usuário digitar uma linha em branco, a operação é cancelada e o método retorna.
-     *
-     * @param scanner Scanner utilizado para entrada dos dados do usuário (nome do autor e nome do livro).
-     * @param hashMap Mapa que associa objetos {@link Autor} a listas de {@link Livro}, representando a biblioteca.
-     *
-     * @implNote O método depende do método externo {@code VerificarNumeroInt} para validar a entrada do ano de publicação.
-     *
-     * @see Autor
-     * @see Livro
-     */
-/*
-    public static void adicionarAutorELivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
-        String nome = null;
-        boolean controleDeLoop = true;
-        Autor autor = null;
-
-        while (controleDeLoop) {
-            System.out.print("Digite o nome do autor que deseja adicionar, deixe em branco para cancelar: ");
-            nome = scanner.nextLine().strip();
-            if (nome.isEmpty()) {
-                return;
-            } else {
-                String nomeverificar = nome;
-                boolean verificarAutor =
-                        hashMap.keySet().stream().anyMatch(nomeAutor -> nomeAutor.getNome().equalsIgnoreCase(nomeverificar));
-                if (verificarAutor) {
-                    System.out.printf("Autor %s esta na biblioteca. %n", nome);
-                    return;
-                } else {
-                    autor = new Autor(nome.toLowerCase());
-                    hashMap.put(autor, new ArrayList<>());
-                    System.out.printf("Autor %s adicionado a biblioteca %n", nome);
-                    controleDeLoop = false;
-
-                }
-
-            }
-        }
-
-        String nomeLivro = null;
-        controleDeLoop = true;
-
-        while (controleDeLoop) {
-            System.out.print("Digite o nome do livro que deseja adicionar, deixe em branco para cancelar: ");
-            nome = scanner.nextLine().strip();
-            if (nome.isEmpty()) {
-                return;
-            } else {
-                String nomeverificar = nome;
-                boolean verificarLivro =
-                        hashMap.get(autor).stream().anyMatch(titulo -> titulo.getTitulo().equalsIgnoreCase(nomeverificar));
-
-                if (verificarLivro) {
-                    System.out.println("Livro ja esta na biblioteca");
-                    controleDeLoop = false;
-                } else {
-                    Livro livro = new Livro(nome, autor);
-                    hashMap.get(autor).add(livro);
-                    System.out.printf("Livro %s adicionado com sucesso ao autor %s %n", nome, autor.getNome());
-                    controleDeLoop = false;
-                }
-
-            }
-        }
-
-
-
-    }
-*/
-
-    public static Autor selecionarAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+    public static Autor adicionarAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
         String nome = null;
         boolean controleDeLoop = true;
         Autor autor = null;
@@ -264,7 +164,7 @@ public class FuncoesGerenciamento {
     }
 
     public static void adicionarAutorELivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap){
-        Autor autor = selecionarAutor(scanner, hashMap);
+        Autor autor = adicionarAutor(scanner, hashMap);
         if (autor == null) {
             return;
         }
