@@ -54,7 +54,7 @@ public class Main {
                     verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na bilioteca. Use a opcao 1 " +
                             "primeiro");
                     if (verificarBiblioteca) {
-                        FuncoesGerenciamento.adicionarLivro(scan, biblioteca);
+                        FuncoesGerenciamento.inserirLivroNaLista(scan, biblioteca);
                     } else {
                         break;
                     }

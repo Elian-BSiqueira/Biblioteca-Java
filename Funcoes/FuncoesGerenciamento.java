@@ -86,14 +86,14 @@ public class FuncoesGerenciamento {
     }
 
     // Adiciona um livro a um autor existente
-    public static void adicionarLivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+    public static void inserirLivroNaLista(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
         listarAutores(hashMap);
         Autor autor= FuncoesVerificacoes.verificaAutor(scanner, hashMap);
         if (autor == null) {
             System.out.println("Operacao cancelada");
             return;
         } else {
-            Livro livro = selecionarLivro(scanner, hashMap, autor);
+            Livro livro = criarLivro(scanner, hashMap, autor);
             if (livro == null) {
                 System.out.println("Operacao cancelada");
             } else {
@@ -103,6 +103,33 @@ public class FuncoesGerenciamento {
 
 
         }
+    }
+
+    public static Livro criarLivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap, Autor autor) {
+        String nomeLivro = null;
+        boolean controleDeLoop = true;
+
+        while (controleDeLoop) {
+            System.out.print("Digite o nome do livro que deseja adicionar, deixe em branco para cancelar: ");
+            nomeLivro = scanner.nextLine().strip();
+            if (nomeLivro.isEmpty()) {
+                return null;
+            } else {
+                String nomeverificar = nomeLivro;
+                boolean verificarLivro =
+                        hashMap.get(autor).stream().anyMatch(titulo -> titulo.getTitulo().equalsIgnoreCase(nomeverificar));
+
+                if (verificarLivro) {
+                    System.out.println("Livro ja esta na biblioteca");
+                    controleDeLoop = false;
+                    return null;
+                } else {
+                    controleDeLoop = false;
+                }
+
+            }
+        }
+        return new Livro(nomeLivro, autor);
     }
 
     public static Autor adicionarAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
@@ -134,42 +161,13 @@ public class FuncoesGerenciamento {
         return autor;
     }
 
-    public static Livro selecionarLivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap, Autor autor) {
-        String nomeLivro = null;
-        Livro livro = null;
-        boolean controleDeLoop = true;
-
-        while (controleDeLoop) {
-            System.out.print("Digite o nome do livro que deseja adicionar, deixe em branco para cancelar: ");
-            nomeLivro = scanner.nextLine().strip();
-            if (nomeLivro.isEmpty()) {
-                return null;
-            } else {
-                String nomeverificar = nomeLivro;
-                boolean verificarLivro =
-                        hashMap.get(autor).stream().anyMatch(titulo -> titulo.getTitulo().equalsIgnoreCase(nomeverificar));
-
-                if (verificarLivro) {
-                    System.out.println("Livro ja esta na biblioteca");
-                    controleDeLoop = false;
-                    return null;
-                } else {
-                    livro = new Livro(nomeLivro, autor);
-                    controleDeLoop = false;
-                }
-
-            }
-        }
-        return livro;
-    }
-
     public static void adicionarAutorELivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap){
         Autor autor = adicionarAutor(scanner, hashMap);
         if (autor == null) {
             return;
         }
 
-        Livro livro = selecionarLivro(scanner,hashMap, autor);
+        Livro livro = criarLivro(scanner,hashMap, autor);
         if (livro == null) {
             return;
         }
