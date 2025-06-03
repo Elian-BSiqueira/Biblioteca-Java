@@ -27,7 +27,7 @@ public abstract class Material {
 Classe Material:
 É a classe base (abstrata) para representar um material da biblioteca, como livros e revistas.
 Contém atributos comuns: título e autor.
-Define o método toString básico para exibir essas informações.
+Define o metodo toString básico para exibir essas informações.
 Serve como base para que Livro e Revista possam herdar esses atributos e comportamentos.
 */
 

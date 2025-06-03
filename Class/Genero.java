@@ -18,5 +18,5 @@ public enum Genero {
 Enum Genero:
 Define os gêneros literários possíveis para um livro.
 Usado na classe Livro para classificar e padronizar os tipos de livros cadastrados.
-O método toString foi sobrescrito para exibir o nome de forma mais amigável (ex: FICCAO → Ficcao).
+O metodo toString foi sobrescrito para exibir o nome de forma mais amigável (ex: FICCAO → Ficcao).
 */

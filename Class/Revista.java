@@ -25,7 +25,7 @@ public class Revista extends Material {
 Classe Revista:
 Representa uma revista da biblioteca.
 Herdando de Material, adiciona um atributo específico: o número da edição.
-Sobrescreve o método toString para mostrar o número da revista junto com título e autor.
+Sobrescreve o metodo toString para mostrar o número da revista junto com título e autor.
 Útil para diferenciar revistas com o mesmo nome, mas de edições diferentes.
 */
 /*

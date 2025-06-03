@@ -24,7 +24,7 @@ public class Livro extends Material {
 Classe Livro:
 Representa um livro da biblioteca.
 Herdando de Material, adiciona um atributo específico: o gênero (usando o enum Genero).
-Sobrescreve o método toString para exibir o gênero junto com o título e autor.
+Sobrescreve o metodo toString para exibir o gênero junto com o título e autor.
 Permite que cada livro tenha uma categoria definida, como Romance ou Fantasia.
 */
 
