@@ -59,7 +59,7 @@ public class FuncoesVerificacoes {
         return numero;
     }
 
-    public static Autor verificaAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+    public static Autor verificaAutor(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap) {
         String nome = " ";
         boolean controleDeLoop = true;
         Autor autor = null;

@@ -82,11 +82,11 @@ public class FuncoesGerenciamento {
     se não encontrar, avisa o usuário, ambas as funções ignoram maiúsculas/minúsculas (usando equalsIgnoreCase) para tornar a pesquisa mais flexível.*/
 
     // Lista autores
-    private static void listarAutores(HashMap<Autor, ArrayList<Livro>> hashMap) {
+    private static void listarAutores(HashMap<Autor, ArrayList<Material>> hashMap) {
         hashMap.keySet().forEach(autor -> System.out.println("- " + autor.getNome()));
     }
 
-    private static Revista criarRevista(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap, Autor autoria) {
+    private static Revista criarRevista(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap, Autor autoria) {
         String nomeRevista = null;
         boolean controleDeLoop = true;
         int numeroDaRevista = 0;
@@ -115,7 +115,7 @@ public class FuncoesGerenciamento {
         return new Revista(nomeRevista, autoria, numeroDaRevista);
     }
 
-    public static void inserirRevista(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+    public static void inserirRevista(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap) {
         listarAutores(hashMap);
         Autor autoria= FuncoesVerificacoes.verificaAutor(scanner, hashMap);
         if (autoria == null) {
@@ -134,8 +134,22 @@ public class FuncoesGerenciamento {
         }
     }
 
+    public static void adicionarAutoriaERevista(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap) {
+        Autor autoria = adicionarAutor(scanner, hashMap);
+        if (autoria == null) {
+            return;
+        }
+
+        Revista revista = criarRevista(scanner,hashMap, autoria);
+        if (revista == null) {
+            return;
+        }
+        hashMap.get(autoria).add(revista);
+        System.out.printf("Livro %s adicionado com sucesso ao autor %s %n", revista.getTitulo(), autoria.getNome());
+    }
+
     // Adiciona um livro a um autor existente
-    public static void inserirLivroNaLista(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+    public static void inserirLivroNaLista(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap) {
         listarAutores(hashMap);
         Autor autor= FuncoesVerificacoes.verificaAutor(scanner, hashMap);
         if (autor == null) {
@@ -185,7 +199,7 @@ public class FuncoesGerenciamento {
         return generoSelecionado;
     }
 
-    public static Livro criarLivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap, Autor autor) {
+    public static Livro criarLivro(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap, Autor autor) {
         String nomeLivro = null;
         boolean controleDeLoop = true;
         Genero generoDoLivro = null;
@@ -214,7 +228,7 @@ public class FuncoesGerenciamento {
         return new Livro(nomeLivro, autor, generoDoLivro);
     }
 
-    public static Autor adicionarAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+    public static Autor adicionarAutor(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap) {
         String nome = null;
         boolean controleDeLoop = true;
         Autor autor = null;
@@ -243,7 +257,7 @@ public class FuncoesGerenciamento {
         return autor;
     }
 
-    public static void adicionarAutorELivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap){
+    public static void adicionarAutorELivro(Scanner scanner, HashMap<Autor, ArrayList<Material>> hashMap){
         Autor autor = adicionarAutor(scanner, hashMap);
         if (autor == null) {
             return;
