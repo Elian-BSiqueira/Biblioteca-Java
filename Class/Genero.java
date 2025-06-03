@@ -1,5 +1,7 @@
 package Class;
 
+import java.util.ArrayList;
+
 public enum Genero {
     ROMANCE,
     FANTASIA,
@@ -12,6 +14,7 @@ public enum Genero {
         return this.name().charAt(0) +
                 this.name().substring(1).toLowerCase();
     }
+
 }
 
 /*

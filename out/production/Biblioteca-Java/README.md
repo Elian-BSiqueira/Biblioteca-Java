@@ -1,15 +1,24 @@
-# Sistema de Livraria
+# 📚 Sistema de Gerenciamento de Biblioteca
 
 ## 📝 Descrição
-Sistema de livraria desenvolvido em java.
+Sistema desenvolvido em Java para gerenciar materiais bibliográficos (livros e revistas), seguindo os princípios de POO e hierarquia de classes.  
 
 ## 🛠️ Pré-requisitos
-- Java 
-- IDE de sua escolha 
+- Java JDK 11+
+- IDE (IntelliJ, Eclipse, etc.)
 
 ## 🎯 Funcionalidades
-- [1] Adicionar livro
-- [2] Pesquisar livro por autor
-- [3] Pesquisar livro titulo
-- [4] Listar livros
-- [5] Remover livro 
+| Código | Operação               | Descrição                                  |
+|--------|------------------------|--------------------------------------------|
+| 1      |                        | 
+| 2      |                        | 
+| 3      |                        |
+| 4      |                        |  
+| 5      |                        |        
+| 6      |                        | 
+
+
+## ✨ Como Executar
+1. Clone o repositório:
+   git clone [https://github.com/Elian-BSiqueira/Biblioteca-Java]
+2. Inicie o arquivo Main.java   

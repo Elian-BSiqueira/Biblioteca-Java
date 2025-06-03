@@ -3,8 +3,10 @@ package Funcoes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import Class.Autor;
-import Class.Livro;
+import java.util.stream.IntStream;
+
+
+import Class.*;
 
 public class FuncoesGerenciamento {
 
@@ -79,10 +81,57 @@ public class FuncoesGerenciamento {
     Pede o nome do autor ao usuário, percorre todos os autores procurando pelo nome, se encontrar, lista todos os livros desse autor,
     se não encontrar, avisa o usuário, ambas as funções ignoram maiúsculas/minúsculas (usando equalsIgnoreCase) para tornar a pesquisa mais flexível.*/
 
-
     // Lista autores
     private static void listarAutores(HashMap<Autor, ArrayList<Livro>> hashMap) {
         hashMap.keySet().forEach(autor -> System.out.println("- " + autor.getNome()));
+    }
+
+    private static Revista criarRevista(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap, Autor autoria) {
+        String nomeRevista = null;
+        boolean controleDeLoop = true;
+        int numeroDaRevista = 0;
+
+        while (controleDeLoop) {
+            System.out.print("Digite o nome da revista que deseja adicionar, deixe em branco para cancelar: ");
+
+            nomeRevista = scanner.nextLine().strip();
+            if (nomeRevista.isEmpty()) {
+                return null;
+            } else {
+                String nomeverificar = nomeRevista;
+                boolean verificarLivro =
+                        hashMap.get(autoria).stream().anyMatch(titulo -> titulo.getTitulo().equalsIgnoreCase(nomeverificar));
+
+                if (verificarLivro) {
+                    System.out.println("Revista ja esta na biblioteca");
+                    return null;
+                } else {
+                    numeroDaRevista = FuncoesVerificacoes.VerificarNumeroInt("Digite o numero da revista: ");
+                    controleDeLoop = false;
+                }
+
+            }
+        }
+        return new Revista(nomeRevista, autoria, numeroDaRevista);
+    }
+
+    public static void inserirRevista(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
+        listarAutores(hashMap);
+        Autor autoria= FuncoesVerificacoes.verificaAutor(scanner, hashMap);
+        if (autoria == null) {
+            System.out.println("Operacao cancelada");
+            return;
+        } else {
+            Revista revista = criarRevista(scanner, hashMap, autoria);
+            if (revista == null) {
+                System.out.println("Operacao cancelada");
+            } else {
+                hashMap.get(autoria).add(revista);
+                System.out.printf("Livro %s adicionado com sucesso ao autor(a) %s %n", revista.getTitulo(), autoria.getNome());
+            }
+
+
+        }
     }
 
     // Adiciona um livro a um autor existente
@@ -105,12 +154,45 @@ public class FuncoesGerenciamento {
         }
     }
 
+    private static Genero selecionarGenero(Scanner scanner) {
+        Genero generoSelecionado = null;
+        Genero[] generos = Genero.values();
+
+        IntStream.rangeClosed(1, generos.length)
+                .forEach(contador -> System.out.printf("%d - %s%n", contador, generos[contador - 1]));
+        int codigoDoGenero = FuncoesVerificacoes.VerificarInteiroComIntervalo("Digite o codigo " +
+                "correspondente ao genero do livro. Digite 0 para cancelar: ", 0, 4);
+        if (codigoDoGenero == 0) {
+            return null;
+        }
+
+        switch (codigoDoGenero) {
+            case 1:
+                generoSelecionado = Genero.ROMANCE;
+                break;
+            case 2:
+                generoSelecionado = Genero.FANTASIA;
+                break;
+            case 3:
+                generoSelecionado = Genero.TERROR;
+                break;
+            case 4:
+                generoSelecionado = Genero.HISTORIA;
+                break;
+            default:
+                System.out.println("Entrada invalida");
+        }
+        return generoSelecionado;
+    }
+
     public static Livro criarLivro(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap, Autor autor) {
         String nomeLivro = null;
         boolean controleDeLoop = true;
+        Genero generoDoLivro = null;
 
         while (controleDeLoop) {
             System.out.print("Digite o nome do livro que deseja adicionar, deixe em branco para cancelar: ");
+
             nomeLivro = scanner.nextLine().strip();
             if (nomeLivro.isEmpty()) {
                 return null;
@@ -121,15 +203,15 @@ public class FuncoesGerenciamento {
 
                 if (verificarLivro) {
                     System.out.println("Livro ja esta na biblioteca");
-                    controleDeLoop = false;
                     return null;
                 } else {
+                    generoDoLivro = selecionarGenero(scanner);
                     controleDeLoop = false;
                 }
 
             }
         }
-        return new Livro(nomeLivro, autor);
+        return new Livro(nomeLivro, autor, generoDoLivro);
     }
 
     public static Autor adicionarAutor(Scanner scanner, HashMap<Autor, ArrayList<Livro>> hashMap) {
@@ -138,7 +220,7 @@ public class FuncoesGerenciamento {
         Autor autor = null;
 
         while (controleDeLoop) {
-            System.out.print("Digite o nome do autor que deseja adicionar, deixe em branco para cancelar: ");
+            System.out.print("Digite o nome do autor/autoria que deseja adicionar, deixe em branco para cancelar: ");
             nome = scanner.nextLine().strip();
             if (nome.isEmpty()) {
                 return null;
@@ -147,12 +229,12 @@ public class FuncoesGerenciamento {
                 boolean verificarAutor =
                         hashMap.keySet().stream().anyMatch(nomeAutor -> nomeAutor.getNome().equalsIgnoreCase(nomeverificar));
                 if (verificarAutor) {
-                    System.out.printf("Autor %s esta na biblioteca. %n", nome);
+                    System.out.printf("Autor/Autoria %s esta na biblioteca. %n", nome);
                     return null;
                 } else {
                     autor = new Autor(nome.toLowerCase());
                     hashMap.put(autor, new ArrayList<>());
-                    System.out.printf("Autor %s adicionado a biblioteca %n", nome);
+                    System.out.printf("Autor/Autoria %s adicionado a biblioteca %n", nome);
                     controleDeLoop = false;
 
                 }
