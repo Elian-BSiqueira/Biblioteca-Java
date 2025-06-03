@@ -8,14 +8,7 @@ import java.util.Scanner;
 import Class.*;
 
 public class FuncoesVerificacoes {
-    /**
-     * Solicita um número inteiro dentro de um intervalo específico.
-     *
-     * @param texto  Mensagem de entrada a ser exibida.
-     * @param minimo Valor mínimo permitido (inclusive).
-     * @param maximo Valor máximo permitido (inclusive).
-     * @return Um número inteiro dentro do intervalo definido.
-     */
+
     public static int VerificarInteiroComIntervalo(String texto, int minimo, int maximo) {
         Scanner scan = new Scanner(System.in);
         boolean controleDeLoop = true;
