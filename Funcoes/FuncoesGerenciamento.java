@@ -74,6 +74,63 @@ public class FuncoesGerenciamento {
         }
     }
 
+    //Pesquisa revistas por título
+    public static void PesquisarRevistaPorTitulo(HashMap<Autor, ArrayList<Material>> biblioteca, Scanner scan) {
+        System.out.print("\nDigite o título da revista: ");
+        String titulo = scan.nextLine().trim();
+
+        if (titulo.isEmpty()) {
+            System.out.println("Busca cancelada.");
+            return;
+        }
+
+        boolean encontrado = false;
+        for (Autor autor : biblioteca.keySet()) {
+            for (Material material : biblioteca.get(autor)) {
+                if (material instanceof Revista && material.getTitulo().equalsIgnoreCase(titulo)) {
+                    System.out.println("\nRevista encontrada:");
+                    System.out.println(material);
+                    encontrado = true;
+                    return;
+                }
+            }
+        }
+        if (!encontrado) {
+            System.out.println("\nRevista não encontrada na biblioteca.");
+        }
+    }
+
+    public static void PesquisarRevistaPorAutor(HashMap<Autor, ArrayList<Material>> biblioteca, Scanner scan) {
+        System.out.print("\nDigite o nome do autor: ");
+        String nomeAutor = scan.nextLine().trim();
+
+        if (nomeAutor.isEmpty()) {
+            System.out.println("Busca cancelada.");
+            return;
+        }
+
+        boolean encontrado = false;
+        for (Autor autor : biblioteca.keySet()) {
+            if (autor.getNome().equalsIgnoreCase(nomeAutor)) {
+                System.out.println("\nRevistas do autor " + autor.getNome() + ":");
+                for (Material material : biblioteca.get(autor)) {
+                    if (material instanceof Revista) {
+                        System.out.println(material);
+                        encontrado = true;
+                    }
+                }
+                if (!encontrado) {
+                    System.out.println("Este autor não possui revistas cadastradas.");
+                }
+                return;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("\nAutor não encontrado na biblioteca.");
+        }
+    }
+
+
     /*Pesquisar por Livro Titulo:
     Pede o título do livro ao usuário, ele percorre todos os autores e seus livro procurando pelo título, se encontrar, mostra o título e o autor, se não encontrar, avisa o usuário
 
