@@ -35,10 +35,12 @@ public class Main {
                 5) Remover material
                 6) Pesquisar livro por titulo
                 7) Pesquisar livros por autor
-                8) Listar livros
-                9) Listar Revistas
-                10) Listar tudo
-                11) Sair
+                8) Pesquisar Revista por titulo
+                9) Pesquisar Revista por autor
+                10) Listar livros
+                11) Listar Revistas
+                12) Listar tudo
+                13) Sair
                 """;
 
         HashMap<Autor, ArrayList<Material>> biblioteca = new HashMap<>();
@@ -88,13 +90,12 @@ public class Main {
                         break;
 
                     }
-
                     break;
 
                 case 6:
                     verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha livros na biblioteca");
                     if (verificarBiblioteca) {
-                        //FuncoesGerenciamento.PesquisarLivroPorTitulo(biblioteca, scan);
+                        FuncoesGerenciamento.PesquisarLivroPorTitulo((HashMap) biblioteca, scan);
                         System.out.println("Pressione Enter para continuar...");
                         scan.nextLine(); // Espera o usuário pressionar Enter
                     }
@@ -103,28 +104,29 @@ public class Main {
                 case 7:
                     verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na biblioteca");
                     if (verificarBiblioteca) {
-                        //FuncoesGerenciamento.PesquisarLivroPorAutor(biblioteca, scan);
+                        FuncoesGerenciamento.PesquisarLivroPorAutor((HashMap) biblioteca, scan);
                         System.out.println("Pressione Enter para continuar...");
                         scan.nextLine(); // Espera o usuário pressionar Enter
                     }
                     break;
 
                 case 8:
-                    verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores ou livros na biblioteca");
+                    verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores ou revistas na biblioteca");
                     if (verificarBiblioteca) {
-                        // FuncoesGerenciamento.ListarLivros(biblioteca, scan);
-                    } else {
-                        break;
+                        FuncoesGerenciamento.PesquisarRevistaPorTitulo(biblioteca, scan);
+                        System.out.println("Pressione Enter para continuar...");
+                        scan.nextLine();
                     }
-
                     break;
 
-                // case 9:
-                    // adicionar verificacao para caso a biblioteca esteja vazia
-                    // Funcao de listar Revistar
-                // case 10:
-                    // Adicionar verificacao para caso a biblioteca esteja vazia
-                    // Funcao de Listar tudo -> revistas e livros
+                case 9:
+                    verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores ou revistas na biblioteca");
+                    if (verificarBiblioteca) {
+                        FuncoesGerenciamento.PesquisarRevistaPorAutor(biblioteca, scan);
+                        System.out.println("Pressione Enter para continuar...");
+                        scan.nextLine();
+                    }
+                    break;
 
                 case 11:
                     System.out.println("Saindo do programa...");
