@@ -32,21 +32,23 @@ public class Main {
                 2) Adicionar livro
                 3) Adiconar autoria e revista
                 4) Adicionar Revista
-                5) Remover livro
+                5) Remover material
                 6) Pesquisar livro por titulo
                 7) Pesquisar livros por autor
                 8) Listar livros
-                9) Sair
+                9) Listar Revistas
+                10) Listar tudo
+                11) Sair
                 """;
 
         HashMap<Autor, ArrayList<Material>> biblioteca = new HashMap<>();
 
         int opcao = -1;
         boolean verificarBiblioteca = false;
-        while (opcao != 7) {
+        while (opcao != 11) {
             System.out.println(menu);
 
-            opcao = FuncoesVerificacoes.VerificarInteiroComIntervalo("Digite sua opcao: ", 1, 7);
+            opcao = FuncoesVerificacoes.VerificarInteiroComIntervalo("Digite sua opcao: ", 1, 11);
 
             switch (opcao) {
                 case 1:
@@ -117,7 +119,14 @@ public class Main {
 
                     break;
 
-                case 9:
+                // case 9:
+                    // adicionar verificacao para caso a biblioteca esteja vazia
+                    // Funcao de listar Revistar
+                // case 10:
+                    // Adicionar verificacao para caso a biblioteca esteja vazia
+                    // Funcao de Listar tudo -> revistas e livros
+
+                case 11:
                     System.out.println("Saindo do programa...");
                     scan.close();
                     break;
