@@ -163,7 +163,7 @@ public class FuncoesGerenciamento {
                     System.out.println("Revista ja esta na biblioteca");
                     return null;
                 } else {
-                    numeroDaRevista = FuncoesVerificacoes.VerificarNumeroInt("Digite o numero da revista: ");
+                    numeroDaRevista = FuncoesVerificacoes.VerificarNumeroInt(scanner,"Digite o numero da revista: ");
                     controleDeLoop = false;
                 }
 
@@ -231,7 +231,7 @@ public class FuncoesGerenciamento {
 
         IntStream.rangeClosed(1, generos.length)
                 .forEach(contador -> System.out.printf("%d - %s%n", contador, generos[contador - 1]));
-        int codigoDoGenero = FuncoesVerificacoes.VerificarInteiroComIntervalo("Digite o codigo " +
+        int codigoDoGenero = FuncoesVerificacoes.VerificarInteiroComIntervalo(scanner,"Digite o codigo " +
                 "correspondente ao genero do livro. Digite 0 para cancelar: ", 0, 4);
         if (codigoDoGenero == 0) {
             return null;

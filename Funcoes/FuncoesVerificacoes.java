@@ -9,14 +9,13 @@ import Class.*;
 
 public class FuncoesVerificacoes {
 
-    public static int VerificarInteiroComIntervalo(String texto, int minimo, int maximo) {
-        Scanner scan = new Scanner(System.in);
+    public static int VerificarInteiroComIntervalo(Scanner scanner, String texto, int minimo, int maximo) {
         boolean controleDeLoop = true;
         int numero = 0;
         do {
             System.out.print(texto);
             try {
-                numero = scan.nextInt();
+                numero = scanner.nextInt();
                 if (numero >= minimo && numero <= maximo) {
                     controleDeLoop = false;
                 } else {
@@ -24,27 +23,27 @@ public class FuncoesVerificacoes {
                 }
 
             } catch (InputMismatchException e) {
-                scan.nextLine();
+                scanner.nextLine();
                 System.out.println("Entrada invalida. Digite um numero");
             }
         } while (controleDeLoop);
 
+        scanner.nextLine();
         return numero;
     }
 
-    public static int VerificarNumeroInt(String texto) {
-        Scanner scan = new Scanner(System.in);
+    public static int VerificarNumeroInt(Scanner scanner, String texto) {
         boolean controleDeLoop = true;
         int numero = 0;
 
         while (controleDeLoop) {
             System.out.print(texto);
             try {
-                numero = scan.nextInt();
+                numero = scanner.nextInt();
                 controleDeLoop = false;
 
             } catch (InputMismatchException e) {
-                scan.nextLine();
+                scanner.nextLine();
                 System.out.println("Entrada invalida. Digite um numero");
             }
 
