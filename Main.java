@@ -23,46 +23,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String menu = "=".repeat(30) +
-                "\nSistema De Biblioteca\n" +
-                "=".repeat(30) +
-                """
-                
-                1) Opcoes de Adicionar
-                2) Remover material
-                3) Opcoes de Pesquisar material
-                4) Listagem
-                5) Sair
-                """;
-
-        String menuDePesquisa = "=".repeat(30) +
-                """
-                
-                1) Pesquisar livro por titulo
-                2) Pesquisar livros por autor
-                3) Pesquisar Revista por titulo
-                4) Pesquisar Revista por autor
-                5) Voltar
-                """;
-
-        String menuDeAdicicao = "=".repeat(30) +
-                """
-                
-                1) Adicionar autor e livro
-                2) Adicionar livro
-                3) Adiconar autoria e revista
-                4) Adicionar Revista
-                5) Voltar
-                """;
-
-        String menuListagem = "=".repeat(30) +
-                """
-                
-                1) Listar livros
-                2) Listar Revistas
-                3) Listar tudo
-                4) Voltar
-                """;
 
         HashMap<Autor, ArrayList<Material>> biblioteca = new HashMap<>();
 
@@ -71,14 +31,14 @@ public class Main {
         boolean verificarBiblioteca = false;
 
         while (opcaoMenuPrimario != 5) {
-            System.out.println(menu);
+            System.out.println(Menus.MENU_PRINCIPAL);
             opcaoMenuPrimario = FuncoesVerificacoes.VerificarInteiroComIntervalo(scan, "Digite sua opcao: ", 1, 5);
 
             switch (opcaoMenuPrimario) {
                 case 1:
                     opcao = -1;
                     while (opcao != 5) {
-                        System.out.println(menuDeAdicicao);
+                        System.out.println(Menus.MENU_DE_ADICAO);
 
                         opcao = FuncoesVerificacoes.VerificarInteiroComIntervalo(scan,"Digite sua opcao: ", 1, 5);
 
@@ -137,7 +97,7 @@ public class Main {
                 case 3:
                     opcao = -1;
                     while (opcao != 5) {
-                        System.out.println(menuDePesquisa);
+                        System.out.println(Menus.MENU_DE_PESQUISA);
 
                         opcao = FuncoesVerificacoes.VerificarInteiroComIntervalo(scan,"Digite sua opcao: ", 1, 5);
 
@@ -193,7 +153,7 @@ public class Main {
                 case 4:
                     opcao = -1;
                     while (opcao != 4) {
-                        System.out.println(menuListagem);
+                        System.out.println(Menus.MENU_LISTAGEM);
 
                         opcao = FuncoesVerificacoes.VerificarInteiroComIntervalo(scan,"Digite sua opcao: ", 1, 4);
 
