@@ -28,19 +28,31 @@ public class Main {
                 "=".repeat(30) +
                 """
                 
+                1) Opcoes de Adicionar
+                2) Remover material
+                3) Opcoes de Pesquisar material
+                4) Listagem
+                5) Sair
+                """;
+
+        String menuDePesquisa = """
+                1) Pesquisar livro por titulo
+                2) Pesquisar livros por autor
+                3) Pesquisar Revista por titulo
+                4) Pesquisar Revista por autor
+                """;
+
+        String menuDeAdicicao = """
                 1) Adicionar autor e livro
                 2) Adicionar livro
                 3) Adiconar autoria e revista
                 4) Adicionar Revista
-                5) Remover material
-                6) Pesquisar livro por titulo
-                7) Pesquisar livros por autor
-                8) Pesquisar Revista por titulo
-                9) Pesquisar Revista por autor
-                10) Listar livros
-                11) Listar Revistas
-                12) Listar tudo
-                13) Sair
+                """;
+
+        String menuListagem = """
+                1) Listar livros
+                2) Listar Revistas
+                3) Listar tudo
                 """;
 
         HashMap<Autor, ArrayList<Material>> biblioteca = new HashMap<>();
