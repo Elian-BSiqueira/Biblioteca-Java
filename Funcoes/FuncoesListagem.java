@@ -1,4 +1,8 @@
+package Funcoes;
+
 import java.util.ArrayList;
+import java.util.Scanner;
+
 public class FuncoesListagem{
  
 private static void listarMateriais() {
