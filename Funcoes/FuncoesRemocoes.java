@@ -1,5 +1,7 @@
-import java.util.ArrayList;
+package Funcoes;
 
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class FuncoesRemocoes{
  
