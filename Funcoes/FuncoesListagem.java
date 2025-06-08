@@ -1,4 +1,7 @@
- private static void listarMateriais() {
+import java.util.ArrayList;
+public class FuncoesListagem{
+ 
+private static void listarMateriais() {
         System.out.println("\n--- Todos os Materiais ---");
         List<Material> materiais = biblioteca.listarTodos();
         
@@ -36,3 +39,4 @@
             }
         }
     }
+}
