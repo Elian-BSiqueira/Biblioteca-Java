@@ -1,4 +1,9 @@
- private static void excluirMaterial() {
+
+
+
+public class FuncoesRemocoes{
+ 
+private static void excluirMaterial() {
         System.out.println("\n--- Excluir Material ---");
         System.out.print("Digite o título do material a ser excluído: ");
         String titulo = scanner.nextLine();
@@ -23,4 +28,5 @@
             System.out.println("Opção inválida!");
             return;
         }
+}
    
