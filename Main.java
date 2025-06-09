@@ -11,6 +11,9 @@ import Class.*;
 
 
 public class Main {
+
+    public static final String NAO_HA_MATERIAL = "Nao ha material na biblioteca";
+
     private static boolean VerificarBilioteca(HashMap<Autor, ArrayList<Material>> hashMap, String texto) {
         if (hashMap.isEmpty()) {
             System.out.println(texto);
@@ -61,8 +64,8 @@ public class Main {
                                 break;
 
                             case 4:
-                                verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na bilioteca. Use a opcao 1 " +
-                                        "primeiro");
+                                verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na bilioteca. " +
+                                        "Use a opcao 1 ou 2 primeiro ");
                                 if (verificarBiblioteca) {
                                     FuncoesGerenciamento.inserirRevista(scan, biblioteca);
                                 } else {
@@ -86,9 +89,9 @@ public class Main {
                     break;
 
                 case 2:
-                    verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha livros na biblioteca");
+                    verificarBiblioteca = VerificarBilioteca(biblioteca, NAO_HA_MATERIAL);
                     if (verificarBiblioteca) {
-                        // Funcao para remover material;
+                        FuncoesRemocoes.excluirMaterial(biblioteca);
                     } else {
                         break;
 
@@ -159,21 +162,21 @@ public class Main {
 
                         switch (opcao) {
                             case 1:
-                                verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha livros na biblioteca");
+                                verificarBiblioteca = VerificarBilioteca(biblioteca, NAO_HA_MATERIAL);
                                 if (verificarBiblioteca) {
                                     FuncoesListagem.listarLivros(biblioteca);
                                 }
                                 break;
 
                             case 2:
-                                verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na biblioteca");
+                                verificarBiblioteca = VerificarBilioteca(biblioteca, NAO_HA_MATERIAL);
                                 if (verificarBiblioteca) {
                                     FuncoesListagem.listarRevistas(biblioteca);
                                 }
                                 break;
 
                             case 3:
-                                verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores ou revistas na biblioteca");
+                                verificarBiblioteca = VerificarBilioteca(biblioteca, NAO_HA_MATERIAL);
                                 if (verificarBiblioteca) {
                                     FuncoesListagem.listarMateriais(biblioteca);
                                 }

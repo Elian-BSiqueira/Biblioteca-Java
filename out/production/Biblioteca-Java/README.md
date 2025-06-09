@@ -8,15 +8,12 @@ Sistema desenvolvido em Java para gerenciar materiais bibliográficos (livros e 
 - IDE (IntelliJ, Eclipse, etc.)
 
 ## 🎯 Funcionalidades
-| Código | Operação               | Descrição                                  |
-|--------|------------------------|--------------------------------------------|
-| 1      |                        | 
-| 2      |                        | 
-| 3      |                        |
-| 4      |                        |  
-| 5      |                        |        
-| 6      |                        | 
-
+| Código | Operação                   | 
+|--------|----------------------------|
+| 1      |Opcoes de Adicionar         | 
+| 2      |Remover material            | 
+| 3      |Opcoes de Pesquisar material|
+| 4      |Listagem                    |  
 
 ## ✨ Como Executar
 1. Clone o repositório:
