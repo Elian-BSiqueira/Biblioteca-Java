@@ -1,46 +1,65 @@
 package Funcoes;
 
+import java.util.List;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.HashMap;
+import Class.*;
 
-public class FuncoesListagem{
- 
-private static void listarMateriais() {
+public class FuncoesListagem {
+
+    public static void listarMateriais(HashMap<Autor, ArrayList<Material>> biblioteca) {
         System.out.println("\n--- Todos os Materiais ---");
-        List<Material> materiais = biblioteca.listarTodos();
-        
-        if (materiais.isEmpty()) {
+        if (biblioteca.isEmpty()) {
             System.out.println("Nenhum material cadastrado.");
-        } else {
-            for (Material material : materiais) {
+            return;
+        }
+
+        boolean hasMaterials = false;
+        for (Autor autor : biblioteca.keySet()) {
+            for (Material material : biblioteca.get(autor)) {
                 System.out.println(material);
+                hasMaterials = true;
             }
         }
+
+        if (!hasMaterials) {
+            System.out.println("Nenhum material cadastrado.");
+        }
     }
-    
-    private static void listarLivros() {
+
+    public static void listarLivros(HashMap<Autor, ArrayList<Material>> biblioteca) {
         System.out.println("\n--- Livros Cadastrados ---");
-        List<Livro> livros = biblioteca.listarLivros();
-        
-        if (livros.isEmpty()) {
-            System.out.println("Nenhum livro cadastrado.");
-        } else {
-            for (Livro livro : livros) {
-                System.out.println(livro);
+        boolean hasBooks = false;
+
+        for (Autor autor : biblioteca.keySet()) {
+            for (Material material : biblioteca.get(autor)) {
+                if (material instanceof Livro) {
+                    System.out.println(material);
+                    hasBooks = true;
+                }
             }
         }
+
+        if (!hasBooks) {
+            System.out.println("Nenhum livro cadastrado.");
+        }
     }
-    
-    private static void listarRevistas() {
+
+    public static void listarRevistas(HashMap<Autor, ArrayList<Material>> biblioteca) {
         System.out.println("\n--- Revistas Cadastradas ---");
-        List<Revista> revistas = biblioteca.listarRevistas();
-        
-        if (revistas.isEmpty()) {
-            System.out.println("Nenhuma revista cadastrada.");
-        } else {
-            for (Revista revista : revistas) {
-                System.out.println(revista);
+        boolean hasMagazines = false;
+
+        for (Autor autor : biblioteca.keySet()) {
+            for (Material material : biblioteca.get(autor)) {
+                if (material instanceof Revista) {
+                    System.out.println(material);
+                    hasMagazines = true;
+                }
             }
+        }
+
+        if (!hasMagazines) {
+            System.out.println("Nenhuma revista cadastrada.");
         }
     }
 }
