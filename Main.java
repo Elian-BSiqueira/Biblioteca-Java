@@ -161,21 +161,21 @@ public class Main {
                             case 1:
                                 verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha livros na biblioteca");
                                 if (verificarBiblioteca) {
-                                    // Funcao de listar livros
+                                    FuncoesListagem.listarLivros(biblioteca);
                                 }
                                 break;
 
                             case 2:
                                 verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores na biblioteca");
                                 if (verificarBiblioteca) {
-                                    // Funcao de listar revistas
+                                    FuncoesListagem.listarRevistas(biblioteca);
                                 }
                                 break;
 
                             case 3:
                                 verificarBiblioteca = VerificarBilioteca(biblioteca, "Nao ha autores ou revistas na biblioteca");
                                 if (verificarBiblioteca) {
-                                    // Funcao para listar tudo
+                                    FuncoesListagem.listarMateriais(biblioteca);
                                 }
                                 break;
 

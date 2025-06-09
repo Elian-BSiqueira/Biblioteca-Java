@@ -32,5 +32,7 @@ public class FuncoesRemocoes {
 
         System.out.println("Materiais encontrados:");
         for (int i = 0; i < resultados.size(); i++) {
-            System.out.println((i+1) + ". " + resultados.get(i));
+            System.out.println((i + 1) + ". " + resultados.get(i));
         }
+    }
+}
