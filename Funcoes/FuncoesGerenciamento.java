@@ -184,7 +184,8 @@ public class FuncoesGerenciamento {
                 System.out.println("Operacao cancelada");
             } else {
                 hashMap.get(autoria).add(revista);
-                System.out.printf("Livro %s adicionado com sucesso ao autor(a) %s %n", revista.getTitulo(), autoria.getNome());
+                System.out.printf("Revista %s adicionada com sucesso ao autor(a) %s %n", revista.getTitulo(),
+                        autoria.getNome());
             }
 
 
@@ -202,7 +203,7 @@ public class FuncoesGerenciamento {
             return;
         }
         hashMap.get(autoria).add(revista);
-        System.out.printf("Livro %s adicionado com sucesso ao autor %s %n", revista.getTitulo(), autoria.getNome());
+        System.out.printf("Revista %s adicionada com sucesso ao autor %s %n", revista.getTitulo(), autoria.getNome());
     }
 
     // Adiciona um livro a um autor existente
