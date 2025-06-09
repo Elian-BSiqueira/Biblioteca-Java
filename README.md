@@ -8,8 +8,8 @@ Sistema desenvolvido em Java para gerenciar materiais bibliográficos (livros e 
 - IDE (IntelliJ, Eclipse, etc.)
 
 ## 🎯 Funcionalidades
-| Código | Operação                   | Descrição                                  |
-|--------|----------------------------|--------------------------------------------|
+| Código | Operação                   | 
+|--------|----------------------------|
 | 1      |Opcoes de Adicionar         | 
 | 2      |Remover material            | 
 | 3      |Opcoes de Pesquisar material|
