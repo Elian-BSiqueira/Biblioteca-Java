@@ -43,7 +43,7 @@ public class FuncoesRemocoes {
             System.out.println((i+1) + ". " + resultados.get(i));
         }
 
-        System.out.print("Selecione o codigo do material a ser excluído (ou 0 para cancelar): ");
+        System.out.print("Selecione o numero 1 para ser excluído (ou 0 para cancelar): ");
         int escolha = FuncoesVerificacoes.VerificarInteiroComIntervalo(scanner, "", 0, resultados.size());
 
         if (escolha == 0) {
